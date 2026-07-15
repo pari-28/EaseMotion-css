@@ -1,0 +1,177 @@
+:root{
+    --primary:#2563eb;
+    --accent:#22c55e;
+    --bg:#f5f8ff;
+    --card:#ffffff;
+    --text:#222;
+    --radius:16px;
+    --speed:.35s;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--bg);
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.checkout-card{
+    position:relative;
+}
+
+.checkout-btn{
+
+    padding:15px 34px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:999px;
+
+    font-size:1rem;
+
+    transition:.3s;
+
+}
+
+.checkout-btn:hover,
+.checkout-btn:focus-visible{
+
+    background:#1d4ed8;
+
+    outline:none;
+
+}
+
+.popover{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:calc(100% + 18px);
+
+    transform:translateX(-50%) translateY(10px);
+
+    width:280px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    padding:22px;
+
+    border-radius:var(--radius);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        opacity var(--speed),
+        transform var(--speed);
+
+}
+
+.checkout-card:hover .popover,
+.checkout-card:focus-within .popover{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:translateX(-50%) translateY(0);
+
+}
+
+.popover::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:inherit;
+
+    border:2px solid var(--accent);
+
+    clip-path:inset(0 100% 100% 0);
+
+    transition:clip-path .6s ease;
+
+}
+
+.checkout-card:hover .popover::before,
+.checkout-card:focus-within .popover::before{
+
+    clip-path:inset(0);
+
+}
+
+.popover h3{
+
+    color:var(--primary);
+
+    margin-bottom:16px;
+
+}
+
+.popover ul{
+
+    list-style:none;
+
+    margin-bottom:16px;
+
+}
+
+.popover li{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:8px 0;
+
+}
+
+strong{
+
+    color:var(--accent);
+
+}
+
+@media(max-width:600px){
+
+.popover{
+
+width:220px;
+
+}
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+
+animation:none!important;
+
+transition:none!important;
+
+}
+
+}
